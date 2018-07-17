@@ -5,32 +5,28 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\PriceProductVolume\Business\VolumePriceExtractor;
+namespace Spryker\Client\PriceProductVolume\PriceExtractor\VolumePriceExtractor;
 
 use Generated\Shared\Transfer\PriceProductTransfer;
+use Spryker\Client\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface;
+use Spryker\Client\PriceProductVolume\PriceExtractor\PriceProductReader\PriceProductReaderInterface;
 use Spryker\Shared\PriceProductVolume\PriceProductVolumeConfig;
-use Spryker\Zed\PriceProductVolume\Business\PriceProductReader\PriceProductReaderInterface;
-use Spryker\Zed\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface;
 
 class VolumePriceExtractor implements VolumePriceExtractorInterface
 {
-    protected const VOLUME_PRICE_QUANTITY = 'quantity';
-    protected const VOLUME_PRICE_NET_PRICE = 'net_price';
-    protected const VOLUME_PRICE_GROSS_PRICE = 'gross_price';
-
     /**
-     * @var \Spryker\Zed\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface
+     * @var \Spryker\Client\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface
      */
     protected $utilEncoding;
 
     /**
-     * @var \Spryker\Zed\PriceProductVolume\Business\PriceProductReader\PriceProductReaderInterface
+     * @var \Spryker\Client\PriceProductVolume\PriceExtractor\PriceProductReader\PriceProductReaderInterface
      */
     protected $priceProductReader;
 
     /**
-     * @param \Spryker\Zed\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding
-     * @param \Spryker\Zed\PriceProductVolume\Business\PriceProductReader\PriceProductReaderInterface $priceProductReader
+     * @param \Spryker\Client\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding
+     * @param \Spryker\Client\PriceProductVolume\PriceExtractor\PriceProductReader\PriceProductReaderInterface $priceProductReader
      */
     public function __construct(
         PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding,
@@ -45,7 +41,7 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
      *
      * @return \Generated\Shared\Transfer\PriceProductTransfer[]
      */
-    public function extractPriceProductVolumesForProductAbstract(array $priceProductTransfers): array
+    public function extractProductPricesForProductAbstract(array $priceProductTransfers): array
     {
         $extractedPrices = $this->extractPriceProductVolumeTransfersFromArray($priceProductTransfers);
 
@@ -53,17 +49,18 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
     }
 
     /**
+     * @param int $idProductConcrete
      * @param \Generated\Shared\Transfer\PriceProductTransfer[] $priceProductTransfers
      *
      * @return \Generated\Shared\Transfer\PriceProductTransfer[]
      */
-    public function extractPriceProductVolumesForProductConcrete(array $priceProductTransfers): array
+    public function extractProductPricesForProductConcrete(int $idProductConcrete, array $priceProductTransfers): array
     {
         $extractedPrices = $this->extractPriceProductVolumeTransfersFromArray($priceProductTransfers);
 
         if (empty($extractedPrices) && !empty($priceProductTransfers)) {
             $abstractProductPrices = $this->priceProductReader->getPriceProductAbstractFromPriceProduct(
-                $priceProductTransfers[0]
+                $idProductConcrete
             );
             $extractedPrices = $this->extractPriceProductVolumeTransfersFromArray($abstractProductPrices);
         }
@@ -83,7 +80,7 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
         foreach ($priceProductTransfers as $priceProductTransfer) {
             $extractedPrices = array_merge(
                 $extractedPrices,
-                $this->extractVolumePriceFromTransfer($priceProductTransfer)
+                $this->extractPriceProductVolumes($priceProductTransfer)
             );
         }
 
@@ -95,7 +92,7 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
      *
      * @return \Generated\Shared\Transfer\PriceProductTransfer[]
      */
-    protected function extractVolumePriceFromTransfer(PriceProductTransfer $priceProductTransfer)
+    public function extractPriceProductVolumes(PriceProductTransfer $priceProductTransfer): array
     {
         if (!$priceProductTransfer->getMoneyValue()->getPriceData()) {
             return [];
