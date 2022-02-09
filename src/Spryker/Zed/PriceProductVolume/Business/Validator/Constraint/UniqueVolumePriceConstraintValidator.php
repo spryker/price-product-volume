@@ -17,21 +17,21 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 class UniqueVolumePriceConstraintValidator extends ConstraintValidator
 {
     /**
-     * @param \ArrayObject<int, \Generated\Shared\Transfer\PriceProductTransfer> $value
+     * @param \ArrayObject<int, \Generated\Shared\Transfer\PriceProductTransfer> $priceProductTransfers
      * @param \Symfony\Component\Validator\Constraint $constraint
      *
      * @throws \Symfony\Component\Validator\Exception\UnexpectedTypeException
      *
      * @return void
      */
-    public function validate($value, Constraint $constraint): void
+    public function validate($priceProductTransfers, Constraint $constraint): void
     {
         if (!$constraint instanceof UniqueVolumePriceConstraint) {
             throw new UnexpectedTypeException($constraint, UniqueVolumePriceConstraint::class);
         }
 
         $existingKeys = [];
-        foreach ($value as $priceProductIndex => $priceProductTransfer) {
+        foreach ($priceProductTransfers as $priceProductIndex => $priceProductTransfer) {
             if (!$priceProductTransfer instanceof PriceProductTransfer) {
                 throw new UnexpectedTypeException($priceProductTransfer, PriceProductTransfer::class);
             }
