@@ -24,11 +24,12 @@ class PriceProductVolumeToPriceProductStorageClientBridge implements PriceProduc
 
     /**
      * @param int $idProductAbstract
+     * @param string|null $storeName
      *
      * @return array<\Generated\Shared\Transfer\PriceProductTransfer>
      */
-    public function getPriceProductAbstractTransfers(int $idProductAbstract): array
+    public function getPriceProductAbstractTransfers(int $idProductAbstract, ?string $storeName = null): array
     {
-        return $this->priceProductStorageClient->getPriceProductAbstractTransfers($idProductAbstract);
+        return $this->priceProductStorageClient->getPriceProductAbstractTransfers($idProductAbstract, $storeName);
     }
 }

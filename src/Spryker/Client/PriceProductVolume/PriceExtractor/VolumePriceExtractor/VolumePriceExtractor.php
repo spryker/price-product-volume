@@ -50,16 +50,18 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
     /**
      * @param int $idProductConcrete
      * @param array<\Generated\Shared\Transfer\PriceProductTransfer> $priceProductTransfers
+     * @param string|null $storeName
      *
      * @return array<\Generated\Shared\Transfer\PriceProductTransfer>
      */
-    public function extractProductPricesForProductConcrete(int $idProductConcrete, array $priceProductTransfers): array
+    public function extractProductPricesForProductConcrete(int $idProductConcrete, array $priceProductTransfers, ?string $storeName = null): array
     {
         $extractedPrices = $this->extractPriceProductVolumeTransfersFromArray($priceProductTransfers);
 
         if (!$extractedPrices && $priceProductTransfers) {
             $abstractProductPrices = $this->priceProductReader->getPriceProductAbstractFromPriceProduct(
                 $idProductConcrete,
+                $storeName,
             );
             $extractedPrices = $this->extractPriceProductVolumeTransfersFromArray($abstractProductPrices);
         }

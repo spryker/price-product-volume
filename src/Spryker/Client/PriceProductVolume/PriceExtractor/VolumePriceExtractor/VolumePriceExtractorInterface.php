@@ -19,8 +19,9 @@ interface VolumePriceExtractorInterface
     /**
      * @param int $idProductConcrete
      * @param array<\Generated\Shared\Transfer\PriceProductTransfer> $priceProductTransfers
+     * @param string|null $storeName
      *
      * @return array<\Generated\Shared\Transfer\PriceProductTransfer>
      */
-    public function extractProductPricesForProductConcrete(int $idProductConcrete, array $priceProductTransfers): array;
+    public function extractProductPricesForProductConcrete(int $idProductConcrete, array $priceProductTransfers, ?string $storeName = null): array;
 }
