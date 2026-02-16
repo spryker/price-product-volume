@@ -37,6 +37,7 @@ class TransferConstraintValidator extends ConstraintValidator
         }
         $value = $value->toArray(false, true);
         foreach ($constraint->fields as $field => $fieldConstraint) {
+            // @phpstan-ignore function.alreadyNarrowedType
             $existsInArray = is_array($value) && array_key_exists($field, $value);
 
             if (!$existsInArray) {

@@ -41,6 +41,7 @@ class VolumePriceHasBasePriceProductConstraintValidator extends ConstraintValida
      */
     public function validate($value, Constraint $constraint): void
     {
+        // @phpstan-ignore instanceof.alwaysTrue
         if (!$value instanceof ArrayObject) {
             throw new UnexpectedTypeException($constraint, ArrayObject::class);
         }

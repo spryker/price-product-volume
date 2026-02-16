@@ -32,6 +32,7 @@ class UniqueVolumePriceConstraintValidator extends ConstraintValidator
 
         $existingKeys = [];
         foreach ($value as $priceProductIndex => $priceProductTransfer) {
+            // @phpstan-ignore instanceof.alwaysTrue
             if (!$priceProductTransfer instanceof PriceProductTransfer) {
                 throw new UnexpectedTypeException($priceProductTransfer, PriceProductTransfer::class);
             }

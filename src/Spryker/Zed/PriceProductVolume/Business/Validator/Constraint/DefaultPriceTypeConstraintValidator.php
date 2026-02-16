@@ -32,6 +32,7 @@ class DefaultPriceTypeConstraintValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
+        // @phpstan-ignore instanceof.alwaysTrue
         if (!$value instanceof PriceProductTransfer) {
             throw new UnexpectedTypeException($value, PriceProductTransfer::class);
         }
