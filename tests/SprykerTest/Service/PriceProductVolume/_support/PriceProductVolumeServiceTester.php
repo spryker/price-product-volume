@@ -34,9 +34,6 @@ class PriceProductVolumeServiceTester extends Actor
      */
     protected const DEFAULT_PRICE_DATA_JSON = '{"volume_prices":[{"quantity":1,"net_price":110,"gross_price":120},{"quantity":100,"net_price":80,"gross_price":100}]}';
 
-    /**
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     public function createBasePriceProductTransfer(): PriceProductTransfer
     {
         $baseMoneyValueTransfer = (new MoneyValueTransfer())
@@ -46,13 +43,6 @@ class PriceProductVolumeServiceTester extends Actor
             ->setMoneyValue($baseMoneyValueTransfer);
     }
 
-    /**
-     * @param int $quantity
-     * @param int|null $grossAmount
-     * @param int|null $netAmount
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     public function createVolumePriceProductTransfer(
         int $quantity,
         ?int $grossAmount = null,

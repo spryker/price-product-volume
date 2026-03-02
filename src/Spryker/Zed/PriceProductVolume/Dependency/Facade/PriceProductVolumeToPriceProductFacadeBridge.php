@@ -38,11 +38,6 @@ class PriceProductVolumeToPriceProductFacadeBridge implements PriceProductVolume
         return $this->priceProductFacade->findProductAbstractPricesWithoutPriceExtraction($idProductAbstract, $priceProductCriteriaTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return int|null
-     */
     public function findIdProductAbstractForPriceProduct(PriceProductTransfer $priceProductTransfer): ?int
     {
         return $this->priceProductFacade->findIdProductAbstractForPriceProduct($priceProductTransfer);

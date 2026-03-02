@@ -33,11 +33,6 @@ class PriceProductReader implements PriceProductReaderInterface
      */
     protected $priceProductStorageClient;
 
-    /**
-     * @param \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToLocaleClientInterface $localeClient
-     * @param \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToProductStorageClientInterface $productStorageClient
-     * @param \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToPriceProductStorageClientInterface $priceProductStorageClient
-     */
     public function __construct(
         PriceProductVolumeToLocaleClientInterface $localeClient,
         PriceProductVolumeToProductStorageClientInterface $productStorageClient,
@@ -65,11 +60,6 @@ class PriceProductReader implements PriceProductReaderInterface
         return $this->priceProductStorageClient->getPriceProductAbstractTransfers($idProductAbstract, $storeName);
     }
 
-    /**
-     * @param int $idProductConcrete
-     *
-     * @return int|null
-     */
     protected function findIdProductAbstractByIdProductConcrete(int $idProductConcrete): ?int
     {
         $localeName = $this->localeClient->getCurrentLocale();

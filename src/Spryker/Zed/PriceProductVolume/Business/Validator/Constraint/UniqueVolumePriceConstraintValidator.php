@@ -60,12 +60,6 @@ class UniqueVolumePriceConstraintValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MoneyValueTransfer $moneyValueTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $volumePriceProductTransfer
-     *
-     * @return string
-     */
     protected function createUniqueKey(
         MoneyValueTransfer $moneyValueTransfer,
         PriceProductTransfer $volumePriceProductTransfer
@@ -79,12 +73,6 @@ class UniqueVolumePriceConstraintValidator extends ConstraintValidator
         );
     }
 
-    /**
-     * @param int $priceProductIndex
-     * @param int $volumePriceIndex
-     *
-     * @return string
-     */
     protected function createValidationPath(
         int $priceProductIndex,
         int $volumePriceIndex

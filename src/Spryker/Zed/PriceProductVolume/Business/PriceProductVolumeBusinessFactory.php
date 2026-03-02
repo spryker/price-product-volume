@@ -24,9 +24,6 @@ use Symfony\Component\Validator\Constraint;
 
 class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Business\VolumePriceExtractor\VolumePriceExtractorInterface
-     */
     public function createVolumePriceExtractor(): VolumePriceExtractorInterface
     {
         return new VolumePriceExtractor(
@@ -35,9 +32,6 @@ class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Business\Validator\PriceProductVolumeValidatorInterface
-     */
     public function createPriceProductVolumeValidator(): PriceProductVolumeValidatorInterface
     {
         return new PriceProductVolumeValidator(
@@ -47,9 +41,6 @@ class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Business\PriceProductReader\PriceProductReaderInterface
-     */
     public function createPriceProductReader(): PriceProductReaderInterface
     {
         return new PriceProductReader(
@@ -57,9 +48,6 @@ class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     public function createUniqueVolumePriceConstraint(): Constraint
     {
         return new UniqueVolumePriceConstraint(
@@ -67,9 +55,6 @@ class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     public function createVolumePriceHasBasePriceProductConstraint(): Constraint
     {
         return new VolumePriceHasBasePriceProductConstraint(
@@ -88,25 +73,16 @@ class PriceProductVolumeBusinessFactory extends AbstractBusinessFactory
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): PriceProductVolumeToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Dependency\Facade\PriceProductVolumeToPriceProductFacadeInterface
-     */
     public function getPriceProductFacade(): PriceProductVolumeToPriceProductFacadeInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::FACADE_PRICE_PRODUCT);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Dependency\External\PriceProductVolumeToValidationAdapterInterface
-     */
     public function getValidationAdapter(): PriceProductVolumeToValidationAdapterInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::ADAPTER_VALIDATION);

@@ -35,25 +35,16 @@ class UniqueVolumePriceConstraint extends SymfonyConstraint
         parent::__construct($options);
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Business\VolumePriceExtractor\VolumePriceExtractorInterface
-     */
     public function getVolumePriceExtractor(): VolumePriceExtractorInterface
     {
         return $this->volumePriceExtractor;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::MESSAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

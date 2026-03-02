@@ -98,9 +98,6 @@ class PriceProductVolumeFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExtractPriceProductVolumesForProductAbstractReturnsNotEmptyArray(): void
     {
         $priceProductVolumeFacade = $this->getPriceProductVolumeFacade();
@@ -111,9 +108,6 @@ class PriceProductVolumeFacadeTest extends Unit
         $this->assertGreaterThan(1, count($volumePrices));
     }
 
-    /**
-     * @return void
-     */
     public function testExtractPriceProductVolumesForProductConcreteReturnsEmptyArrayWithoutPriceData(): void
     {
         $priceProductVolumeFacade = $this->getPriceProductVolumeFacade();
@@ -124,9 +118,6 @@ class PriceProductVolumeFacadeTest extends Unit
         $this->assertCount(1, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractPriceProductVolumeTransfersFromArray(): void
     {
         // Arrange
@@ -140,9 +131,6 @@ class PriceProductVolumeFacadeTest extends Unit
         $this->assertCount(2, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsPassesValidation(): void
     {
         // Arrange
@@ -156,9 +144,6 @@ class PriceProductVolumeFacadeTest extends Unit
         $this->assertTrue($validationResponseTransfer->getIsSuccess());
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsViolatesValidGrossNetPriceConstraint(): void
     {
         // Arrange
@@ -178,9 +163,6 @@ class PriceProductVolumeFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsViolatesValidVolumeQuantityConstraint(): void
     {
         // Arrange
@@ -200,9 +182,6 @@ class PriceProductVolumeFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsViolatesDefaultPriceTypeConstraint(): void
     {
         // Arrange
@@ -225,9 +204,6 @@ class PriceProductVolumeFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsViolatesUniqueVolumePriceConstraint(): void
     {
         // Arrange
@@ -249,9 +225,6 @@ class PriceProductVolumeFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testValidatePriceProductsViolatesVolumePriceHasBasePriceConstraint(): void
     {
         // Arrange
@@ -276,20 +249,11 @@ class PriceProductVolumeFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\PriceProductVolume\Business\PriceProductVolumeFacade
-     */
     protected function getPriceProductVolumeFacade(): PriceProductVolumeFacade
     {
         return new PriceProductVolumeFacade();
     }
 
-    /**
-     * @param int $netPrice
-     * @param int $grossPrice
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function createPriceProductTransfer(
         int $netPrice,
         int $grossPrice
@@ -316,12 +280,6 @@ class PriceProductVolumeFacadeTest extends Unit
         return $priceProductTransfer;
     }
 
-    /**
-     * @param int $grossAmount
-     * @param int $netAmount
-     *
-     * @return \Generated\Shared\Transfer\MoneyValueTransfer
-     */
     protected function createMoneyValueTransfer(
         int $grossAmount,
         int $netAmount

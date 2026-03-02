@@ -17,20 +17,12 @@ class PriceProductReader implements PriceProductReaderInterface
      */
     protected $priceProductFacade;
 
-    /**
-     * @param \Spryker\Zed\PriceProductVolume\Dependency\Facade\PriceProductVolumeToPriceProductFacadeInterface $priceProductFacade
-     */
     public function __construct(
         PriceProductVolumeToPriceProductFacadeInterface $priceProductFacade
     ) {
         $this->priceProductFacade = $priceProductFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return array
-     */
     public function getPriceProductAbstractFromPriceProduct(PriceProductTransfer $priceProductTransfer): array
     {
         $idProductAbstract = $this->priceProductFacade->findIdProductAbstractForPriceProduct($priceProductTransfer);

@@ -79,12 +79,6 @@ class VolumePriceHasBasePriceProductConstraintValidator extends ConstraintValida
         }
     }
 
-    /**
-     * @param int $priceProductIndex
-     * @param int $volumePriceIndex
-     *
-     * @return string
-     */
     protected function createViolationPath(
         int $priceProductIndex,
         int $volumePriceIndex

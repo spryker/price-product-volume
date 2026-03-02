@@ -25,10 +25,6 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
      */
     protected $priceProductReader;
 
-    /**
-     * @param \Spryker\Client\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding
-     * @param \Spryker\Client\PriceProductVolume\PriceExtractor\PriceProductReader\PriceProductReaderInterface $priceProductReader
-     */
     public function __construct(
         PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding,
         PriceProductReaderInterface $priceProductReader
@@ -108,13 +104,6 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
         return array_merge([], ...$priceProductTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param string $priceType
-     * @param string|null $priceData
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function copyPriceProductTransfer(PriceProductTransfer $priceProductTransfer, string $priceType, ?string $priceData): PriceProductTransfer
     {
         $moneyValueTransfer = (new MoneyValueTransfer())
@@ -153,12 +142,6 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
         return $priceProductTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param array $volumePrice
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function mapVolumePriceToPriceProductTransfer(PriceProductTransfer $priceProductTransfer, array $volumePrice): PriceProductTransfer
     {
         $volumePriceTransfer = (new PriceProductTransfer())

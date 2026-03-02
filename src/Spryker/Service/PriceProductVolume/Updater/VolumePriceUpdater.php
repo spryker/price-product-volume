@@ -18,20 +18,11 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Service\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(PriceProductVolumeToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $newVolumePriceProductTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     public function addVolumePrice(
         PriceProductTransfer $priceProductTransfer,
         PriceProductTransfer $newVolumePriceProductTransfer
@@ -44,13 +35,6 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $this->setVolumePriceData($priceProductTransfer, $volumePriceData);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $volumePriceProductTransferToReplace
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $newVolumePriceProductTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     public function replaceVolumePrice(
         PriceProductTransfer $priceProductTransfer,
         PriceProductTransfer $volumePriceProductTransferToReplace,
@@ -78,12 +62,6 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $this->addVolumePrice($priceProductTransfer, $newVolumePriceProductTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $volumePriceProductTransferToDelete
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     public function deleteVolumePrice(
         PriceProductTransfer $priceProductTransfer,
         PriceProductTransfer $volumePriceProductTransferToDelete
@@ -101,23 +79,11 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $this->setVolumePriceData($priceProductTransfer, $volumePriceData);
     }
 
-    /**
-     * @param array $volumePriceDataElement
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return bool
-     */
     protected function isSameQuantity(array $volumePriceDataElement, PriceProductTransfer $priceProductTransfer): bool
     {
         return (int)$volumePriceDataElement[PriceProductVolumeConfig::VOLUME_PRICE_QUANTITY] === (int)$priceProductTransfer->getVolumeQuantityOrFail();
     }
 
-    /**
-     * @param array $volumePriceData
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $newVolumePriceProductTransfer
-     *
-     * @return array
-     */
     protected function addNewVolumePriceDataElement(
         array $volumePriceData,
         PriceProductTransfer $newVolumePriceProductTransfer
@@ -135,11 +101,6 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $volumePriceData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return array
-     */
     protected function getVolumePriceData(PriceProductTransfer $priceProductTransfer): array
     {
         $priceData = $this->utilEncodingService->decodeJson(
@@ -154,12 +115,6 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $priceData[PriceProductVolumeConfig::VOLUME_PRICE_TYPE] ?? [];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param array $volumePriceData
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function setVolumePriceData(
         PriceProductTransfer $priceProductTransfer,
         array $volumePriceData
@@ -175,11 +130,6 @@ class VolumePriceUpdater implements VolumePriceUpdaterInterface
         return $priceProductTransfer;
     }
 
-    /**
-     * @param array $volumePriceData
-     *
-     * @return array
-     */
     protected function sortVolumePriceDataByQuantity(array $volumePriceData): array
     {
         $compareFunction = function (array $volumePriceDataA, array $volumePriceDataB): int {

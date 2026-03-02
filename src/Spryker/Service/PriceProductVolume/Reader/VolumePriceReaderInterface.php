@@ -11,19 +11,8 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 
 interface VolumePriceReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return bool
-     */
     public function hasVolumePrices(PriceProductTransfer $priceProductTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $volumePriceProductTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer|null
-     */
     public function extractVolumePrice(
         PriceProductTransfer $priceProductTransfer,
         PriceProductTransfer $volumePriceProductTransfer

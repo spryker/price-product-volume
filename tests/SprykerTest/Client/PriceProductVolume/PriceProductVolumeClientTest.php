@@ -59,9 +59,6 @@ class PriceProductVolumeClientTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testExtractProductPricesForProductAbstractExtractVolumePricesIfOnlyPriceDataIsPresent(): void
     {
         // Arrange
@@ -81,9 +78,6 @@ class PriceProductVolumeClientTest extends Unit
         $this->assertCount(2, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractProductPricesForProductConcreteExtractVolumePricesIfOnlyPriceDataIsPresent(): void
     {
         // Arrange
@@ -103,9 +97,6 @@ class PriceProductVolumeClientTest extends Unit
         $this->assertCount(3, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractProductPricesForProductConcreteReturnsOnlyMainPriceIfPriceDataNotPresent(): void
     {
         // Arrange
@@ -118,9 +109,6 @@ class PriceProductVolumeClientTest extends Unit
         $this->assertCount(1, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractProductPricesForProductConcreteReturnsExpectedVolumePricesUsingOnlyPriceDataByPriceType(): void
     {
         // Arrange
@@ -145,9 +133,6 @@ class PriceProductVolumeClientTest extends Unit
         $this->assertCount(5, $volumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractProductPricesForProductConcreteReturnsExpectedVolumePricesUsingPriceDataByPriceTypeAndPriceData(): void
     {
         // Arrange
@@ -175,12 +160,6 @@ class PriceProductVolumeClientTest extends Unit
         $this->assertCount(5, $volumePrices);
     }
 
-    /**
-     * @param int $netPrice
-     * @param int $grossPrice
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function createPriceProductTransfer(int $netPrice, int $grossPrice): PriceProductTransfer
     {
         $priceDimensionTransfer = (new PriceProductDimensionTransfer())
@@ -198,9 +177,6 @@ class PriceProductVolumeClientTest extends Unit
         return $priceProductTransfer;
     }
 
-    /**
-     * @return array
-     */
     protected function getVolumePriceData(): array
     {
         return [

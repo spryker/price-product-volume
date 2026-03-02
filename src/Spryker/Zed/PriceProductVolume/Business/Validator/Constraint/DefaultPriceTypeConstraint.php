@@ -16,17 +16,11 @@ class DefaultPriceTypeConstraint extends SymfonyConstraint
      */
     protected const MESSAGE = 'Volume prices can only have DEFAULT prices.';
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::MESSAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

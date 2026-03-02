@@ -23,10 +23,5 @@ interface PriceProductVolumeToPriceProductFacadeInterface
         ?PriceProductCriteriaTransfer $priceProductCriteriaTransfer = null
     ): array;
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return int|null
-     */
     public function findIdProductAbstractForPriceProduct(PriceProductTransfer $priceProductTransfer): ?int;
 }

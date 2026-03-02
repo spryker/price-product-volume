@@ -16,25 +16,16 @@ use Spryker\Service\PriceProductVolume\Updater\VolumePriceUpdaterInterface;
 
 class PriceProductVolumeServiceFactory extends AbstractServiceFactory
 {
-    /**
-     * @return \Spryker\Service\PriceProductVolume\Updater\VolumePriceUpdaterInterface
-     */
     public function createVolumePriceUpdater(): VolumePriceUpdaterInterface
     {
         return new VolumePriceUpdater($this->getUtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Service\PriceProductVolume\Reader\VolumePriceReaderInterface
-     */
     public function createVolumePriceReader(): VolumePriceReaderInterface
     {
         return new VolumePriceReader($this->getUtilEncodingService());
     }
 
-    /**
-     * @return \Spryker\Service\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): PriceProductVolumeToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::SERVICE_UTIL_ENCODING);

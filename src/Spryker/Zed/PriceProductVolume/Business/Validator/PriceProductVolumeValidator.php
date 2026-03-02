@@ -127,9 +127,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ];
     }
 
-    /**
-     * @return array
-     */
     protected function createPriceProductConstraints(): array
     {
         return [
@@ -143,9 +140,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ];
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     protected function getMoneyValueTransferConstraint(): SymfonyConstraint
     {
         return new TransferConstraint([
@@ -154,9 +148,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     protected function getNetAmountConstraint(): SymfonyConstraint
     {
         return new GreaterThanOrEqual([
@@ -165,9 +156,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     protected function getGrossAmountConstraint(): SymfonyConstraint
     {
         return new GreaterThanOrEqual([
@@ -176,9 +164,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraint
-     */
     protected function getVolumeQuantityConstraint(): SymfonyConstraint
     {
         return new GreaterThanOrEqual([
@@ -187,12 +172,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\Validator\ConstraintViolationListInterface $constraintViolationList
-     * @param \Generated\Shared\Transfer\ValidationResponseTransfer $validationResponseTransfer
-     *
-     * @return \Generated\Shared\Transfer\ValidationResponseTransfer
-     */
     protected function addViolationsToValidationResponse(
         ConstraintViolationListInterface $constraintViolationList,
         ValidationResponseTransfer $validationResponseTransfer
@@ -218,12 +197,6 @@ class PriceProductVolumeValidator implements PriceProductVolumeValidatorInterfac
         return $validationResponseTransfer;
     }
 
-    /**
-     * @param int $priceProductIndex
-     * @param int $volumePriceProductIndex
-     *
-     * @return string
-     */
     protected function createPropertyPath(int $priceProductIndex, int $volumePriceProductIndex): string
     {
         return sprintf(

@@ -88,12 +88,6 @@ class PriceProductVolumeFilterPlugin extends AbstractPlugin implements PriceProd
         return $minPriceProductTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $minPrice
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceToCompare
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function resolvePrice(PriceProductTransfer $minPrice, PriceProductTransfer $priceToCompare): PriceProductTransfer
     {
         if ($minPrice->getVolumeQuantity() > $priceToCompare->getVolumeQuantity()) {
@@ -103,11 +97,6 @@ class PriceProductVolumeFilterPlugin extends AbstractPlugin implements PriceProd
         return $priceToCompare;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return bool
-     */
     protected function filterVolumePrices(PriceProductTransfer $priceProductTransfer): bool
     {
         return $priceProductTransfer->getVolumeQuantity() == null;

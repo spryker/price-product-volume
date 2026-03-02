@@ -19,19 +19,11 @@ class VolumePriceReader implements VolumePriceReaderInterface
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Service\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncodingService
-     */
     public function __construct(PriceProductVolumeToUtilEncodingServiceInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return bool
-     */
     public function hasVolumePrices(PriceProductTransfer $priceProductTransfer): bool
     {
         $volumePriceData = $this->getVolumePriceData($priceProductTransfer);
@@ -39,12 +31,6 @@ class VolumePriceReader implements VolumePriceReaderInterface
         return (bool)$volumePriceData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $volumePriceProductTransfer
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer|null
-     */
     public function extractVolumePrice(
         PriceProductTransfer $priceProductTransfer,
         PriceProductTransfer $volumePriceProductTransfer
@@ -68,11 +54,6 @@ class VolumePriceReader implements VolumePriceReaderInterface
         return null;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return array
-     */
     protected function getVolumePriceData(PriceProductTransfer $priceProductTransfer): array
     {
         $priceData = $this->utilEncodingService->decodeJson(
@@ -87,12 +68,6 @@ class VolumePriceReader implements VolumePriceReaderInterface
         return $priceData[PriceProductVolumeConfig::VOLUME_PRICE_TYPE] ?? [];
     }
 
-    /**
-     * @param array $volumePriceDataElement
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return bool
-     */
     protected function isSameQuantity(array $volumePriceDataElement, PriceProductTransfer $priceProductTransfer): bool
     {
         return (int)$volumePriceDataElement[PriceProductVolumeConfig::VOLUME_PRICE_QUANTITY] === (int)$priceProductTransfer->getVolumeQuantityOrFail();

@@ -19,9 +19,6 @@ use Spryker\Client\PriceProductVolume\PriceExtractor\VolumePriceExtractor\Volume
 
 class PriceProductVolumeFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\PriceProductVolume\PriceExtractor\VolumePriceExtractor\VolumePriceExtractorInterface
-     */
     public function createVolumePriceExtractor(): VolumePriceExtractorInterface
     {
         return new VolumePriceExtractor(
@@ -30,9 +27,6 @@ class PriceProductVolumeFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\PriceProductVolume\PriceExtractor\PriceProductReader\PriceProductReaderInterface
-     */
     public function createPriceProductReader(): PriceProductReaderInterface
     {
         return new PriceProductReader(
@@ -42,33 +36,21 @@ class PriceProductVolumeFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface
-     */
     public function getUtilEncodingService(): PriceProductVolumeToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
-    /**
-     * @return \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToProductStorageClientInterface
-     */
     public function getProductStorageClient(): PriceProductVolumeToProductStorageClientInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::CLIENT_PRODUCT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToPriceProductStorageClientInterface
-     */
     public function getPriceProductStorageClient(): PriceProductVolumeToPriceProductStorageClientInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::CLIENT_PRICE_PRODUCT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\PriceProductVolume\Dependency\Client\PriceProductVolumeToLocaleClientInterface
-     */
     public function getLocaleClient(): PriceProductVolumeToLocaleClientInterface
     {
         return $this->getProvidedDependency(PriceProductVolumeDependencyProvider::CLIENT_LOCALE);

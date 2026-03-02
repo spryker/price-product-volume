@@ -16,17 +16,11 @@ class VolumeQuantityConstraint extends SymfonyConstraint
      */
     protected const MESSAGE = 'Invalid volume quantity.';
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::MESSAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

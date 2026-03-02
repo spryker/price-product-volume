@@ -16,17 +16,11 @@ class ValidGrossNetPriceConstraint extends SymfonyConstraint
      */
     protected const MESSAGE = 'Gross Default and/or Net Default price is required for volume price.';
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::MESSAGE;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

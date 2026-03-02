@@ -61,12 +61,6 @@ class DefaultPriceTypeConstraintValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param \Spryker\Zed\PriceProductVolume\Business\Validator\Constraint\DefaultPriceTypeConstraint $constraint
-     * @param string $moneyValueType
-     *
-     * @return void
-     */
     protected function addViolationForMoneyValueType(
         DefaultPriceTypeConstraint $constraint,
         string $moneyValueType
@@ -79,11 +73,6 @@ class DefaultPriceTypeConstraintValidator extends ConstraintValidator
             ->addViolation();
     }
 
-    /**
-     * @param string $moneyValueType
-     *
-     * @return string
-     */
     protected function createPropertyPath(string $moneyValueType): string
     {
         return sprintf('[%s][%s]', PriceProductTransfer::MONEY_VALUE, $moneyValueType);

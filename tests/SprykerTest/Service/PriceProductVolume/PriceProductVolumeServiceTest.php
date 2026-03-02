@@ -48,9 +48,6 @@ class PriceProductVolumeServiceTest extends Unit
      */
     protected $priceProductVolumeService;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -58,9 +55,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->priceProductVolumeService = new PriceProductVolumeService();
     }
 
-    /**
-     * @return void
-     */
     public function testAddVolumePriceAddsVolumePrice(): void
     {
         // Arrange
@@ -86,9 +80,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertSame($expectedJson, $basePriceProductTransfer->getMoneyValueOrFail()->getPriceData());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteVolumePriceDeletesVolumePrice(): void
     {
         // Arrange
@@ -106,9 +97,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertSame($expectedJson, $basePriceProductTransfer->getMoneyValueOrFail()->getPriceData());
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceVolumePriceReplacesVolumePrice(): void
     {
         // Arrange
@@ -136,9 +124,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertSame($expectedJson, $basePriceProductTransfer->getMoneyValueOrFail()->getPriceData());
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceVolumePriceAddsVolumePriceWithNonExistingQuantity(): void
     {
         // Arrange
@@ -166,9 +151,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertSame($expectedJson, $basePriceProductTransfer->getMoneyValueOrFail()->getPriceData());
     }
 
-    /**
-     * @return void
-     */
     public function testHasVolumePricesReturnsTrue(): void
     {
         // Arrange
@@ -181,9 +163,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertTrue($hasVolumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testHasVolumePricesReturnsFalse(): void
     {
         // Arrange
@@ -199,9 +178,6 @@ class PriceProductVolumeServiceTest extends Unit
         $this->assertFalse($hasVolumePrices);
     }
 
-    /**
-     * @return void
-     */
     public function testExtractVolumePriceReturnsVolumePriceProductTransfer(): void
     {
         // Arrange

@@ -62,11 +62,6 @@ class ValidGrossNetPriceConstraintValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param string $moneyValueType
-     *
-     * @return string
-     */
     protected function createPropertyPath(string $moneyValueType): string
     {
         return sprintf('[%s][%s]', PriceProductTransfer::MONEY_VALUE, $moneyValueType);

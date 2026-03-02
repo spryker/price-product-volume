@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\PriceProductTransfer;
 
 interface PriceProductReaderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     *
-     * @return array
-     */
     public function getPriceProductAbstractFromPriceProduct(PriceProductTransfer $priceProductTransfer): array;
 }

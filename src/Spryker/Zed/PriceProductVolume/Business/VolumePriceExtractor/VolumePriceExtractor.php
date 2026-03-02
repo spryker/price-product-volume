@@ -24,10 +24,6 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
      */
     protected $priceProductReader;
 
-    /**
-     * @param \Spryker\Zed\PriceProductVolume\Dependency\Service\PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding
-     * @param \Spryker\Zed\PriceProductVolume\Business\PriceProductReader\PriceProductReaderInterface $priceProductReader
-     */
     public function __construct(
         PriceProductVolumeToUtilEncodingServiceInterface $utilEncoding,
         PriceProductReaderInterface $priceProductReader
@@ -115,12 +111,6 @@ class VolumePriceExtractor implements VolumePriceExtractorInterface
         return $priceProductTransfers;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\PriceProductTransfer $priceProductTransfer
-     * @param array $volumePrice
-     *
-     * @return \Generated\Shared\Transfer\PriceProductTransfer
-     */
     protected function mapVolumePriceToPriceProductTransfer(PriceProductTransfer $priceProductTransfer, array $volumePrice): PriceProductTransfer
     {
         $volumePriceTransfer = (new PriceProductTransfer())
