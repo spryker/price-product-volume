@@ -12,21 +12,29 @@ use Spryker\Shared\Kernel\AbstractSharedConfig;
 class PriceProductVolumeConfig extends AbstractSharedConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const VOLUME_PRICE_TYPE = 'volume_prices';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const VOLUME_PRICE_QUANTITY = 'quantity';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const VOLUME_PRICE_NET_PRICE = 'net_price';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const VOLUME_PRICE_GROSS_PRICE = 'gross_price';
